@@ -1,95 +1,121 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
 
-export default function Home() {
+import Stack from "@mui/material/Stack";
+import Banner from "@/components/Banner";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { Box, Grid2 as Grid, useMediaQuery, useTheme } from "@mui/material";
+import BotLink from "@/components/titles/BotLink";
+import MCServerLink from "@/components/titles/MCServerLink";
+import StudioLink from "@/components/titles/StudioLink";
+import WelcomeTitle from "@/components/titles/WelcomeTitle";
+
+const HomePage: React.FC = () => {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <Stack direction={"column"}>
+      <Banner
+        background={"/images/home_banner.png"}
+        backgroundPosition="60% 50%"
+      >
+        <WelcomeTitle />
+      </Banner>
+      <Container maxWidth={"xl"}>
+        <Box component={"section"} p={4}>
+          <Grid container spacing={0} rowSpacing={4}>
+            <Grid
+              size={{
+                sm: 12,
+                md: 6,
+                lg: 4,
+              }}
+              display={"flex"}
+              direction={"column"}
+              justifyContent={"center"}
+              alignItems={"center"}
+            >
+              <Box bgcolor={"lightgray"} width={"80%"} height={300} />
+            </Grid>
+            <Grid
+              size={{
+                sm: 12,
+                md: 6,
+                lg: 8,
+              }}
+              display={"flex"}
+              direction={"column"}
+              justifyContent={"center"}
+              alignItems={"center"}
+            >
+              <Stack
+                direction={"column"}
+                height={"100%"}
+                justifyContent={"center"}
+                alignItems={"center"}
+                color={"text.primary"}
+                spacing={4}
+              >
+                <Typography variant="h3" textAlign={"center"}>
+                  Who is AcuPinchure ?
+                </Typography>
+                <Typography
+                  variant="body1"
+                  textAlign={"center"}
+                  maxWidth={"50rem"}
+                >
+                  I am a full-stack developer and amateur illustrator. I am
+                  passionate about creating and sharing my works with the world.
+                  I am also a fan of anime and seiyuu events.
+                </Typography>
+              </Stack>
+            </Grid>
+          </Grid>
+        </Box>
+        <Box component={"section"} p={4} minHeight={"100vh"}>
+          <Stack
+            direction={"column"}
+            height={"100%"}
+            alignItems={"stretch"}
+            justifyContent={"center"}
+            color={"text.primary"}
+            spacing={6}
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+            <Typography variant="h3" textAlign={"center"}>
+              Explore My Projects
+            </Typography>
+            <Grid container spacing={0} rowGap={4}>
+              <Grid
+                size={{
+                  sm: 12,
+                  md: 6,
+                  lg: 4,
+                }}
+              >
+                <BotLink />
+              </Grid>
+              <Grid
+                size={{
+                  sm: 12,
+                  md: 6,
+                  lg: 4,
+                }}
+              >
+                <MCServerLink />
+              </Grid>
+              <Grid
+                size={{
+                  sm: 12,
+                  md: 6,
+                  lg: 4,
+                }}
+              >
+                <StudioLink />
+              </Grid>
+            </Grid>
+          </Stack>
+        </Box>
+      </Container>
+    </Stack>
   );
-}
+};
+
+export default HomePage;
