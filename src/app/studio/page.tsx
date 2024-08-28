@@ -7,7 +7,7 @@ const StudioPage: React.FC = () => {
   return (
     <Stack direction={"column"}>
       <Banner
-        background={"/images/studio_banner.png"}
+        background={"/images/studio_banner.jpg"}
         brightness={1}
         backgroundPosition="80% 50%"
       >

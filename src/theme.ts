@@ -62,6 +62,16 @@ const theme = createTheme({
         },
       },
     },
+    MuiDialog: {
+      defaultProps: {
+        disableScrollLock: true,
+      },
+    },
+    MuiMenu: {
+      defaultProps: {
+        disableScrollLock: true,
+      },
+    },
   },
 });
 

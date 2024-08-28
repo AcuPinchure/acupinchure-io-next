@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
   return (
     <Stack direction={"column"}>
       <Banner
-        background={"/images/home_banner.png"}
+        background={"/images/home_banner.jpg"}
         backgroundPosition="60% 50%"
       >
         <WelcomeTitle />

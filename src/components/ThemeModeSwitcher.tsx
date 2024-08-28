@@ -36,7 +36,6 @@ const ThemeModeSwitcher: React.FC = () => {
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
-        disableScrollLock
         slotProps={{
           paper: {
             elevation: 0,
