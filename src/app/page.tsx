@@ -13,15 +13,12 @@ import WelcomeTitle from "@/components/titles/WelcomeTitle";
 const HomePage: React.FC = () => {
   return (
     <Stack direction={"column"}>
-      <Banner
-        background={"/images/home_banner.jpg"}
-        backgroundPosition="60% 50%"
-      >
+      <Banner background={"/images/home_banner.jpg"} brightness={0.5}>
         <WelcomeTitle />
       </Banner>
-      <Container maxWidth={"xl"}>
-        <Box component={"section"} p={4}>
-          <Grid container spacing={0} rowSpacing={4}>
+      <Box component={"section"} p={4}>
+        <Container maxWidth={"xl"}>
+          <Grid container spacing={0} rowSpacing={4} minHeight={"100vh"}>
             <Grid
               size={{
                 sm: 12,
@@ -69,11 +66,13 @@ const HomePage: React.FC = () => {
               </Stack>
             </Grid>
           </Grid>
-        </Box>
-        <Box component={"section"} p={4} minHeight={"100vh"}>
+        </Container>
+      </Box>
+      <Box component={"section"} p={4}>
+        <Container maxWidth={"xl"}>
           <Stack
             direction={"column"}
-            height={"100%"}
+            minHeight={"100vh"}
             alignItems={"stretch"}
             justifyContent={"center"}
             color={"text.primary"}
@@ -112,8 +111,8 @@ const HomePage: React.FC = () => {
               </Grid>
             </Grid>
           </Stack>
-        </Box>
-      </Container>
+        </Container>
+      </Box>
     </Stack>
   );
 };

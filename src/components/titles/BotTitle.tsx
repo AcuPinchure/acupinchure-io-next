@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Image from "next/image";
@@ -5,9 +6,13 @@ import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const BotTitle: React.FC = () => {
   const [startAnimation, setStartAnimation] = useState(false);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     setTimeout(() => {
@@ -16,12 +21,12 @@ const BotTitle: React.FC = () => {
   }, []);
 
   return (
-    <Stack direction={"column"} alignItems={"center"}>
+    <Stack direction={"column"} alignItems={"center"} spacing={1}>
       <Box
         position={"relative"}
-        height={122}
-        width={startAnimation ? 400 : 0}
-        sx={{ transition: "all 1s ease" }}
+        height={isMobile ? 67.5 : 90}
+        width={startAnimation ? (isMobile ? 300 : 400) : 0}
+        sx={{ transition: "width 1s ease" }}
       >
         <Box
           overflow={"hidden"}
@@ -29,27 +34,26 @@ const BotTitle: React.FC = () => {
           top={0}
           left={"50%"}
           sx={{ transition: "all 1s ease", transform: `translateX(-50%)` }}
-          width={startAnimation ? 400 : 0}
-          height={122}
+          width={startAnimation ? (isMobile ? 300 : 400) : 0}
+          height={isMobile ? 67.5 : 90}
         >
-          <Image
+          <img
             src={"/images/bot/bot_logo.svg"}
             alt={"Lovelive Seiyuu Bot"}
-            height={122}
-            width={(122 * 224.3) / 68.21}
+            height={isMobile ? 67.5 : 90}
             style={{ position: "absolute", top: 0, left: 0 }}
           />
         </Box>
-        <Image
+        <img
           src={"/images/bot/bot_L_logo.svg"}
           alt={"Image Bot-Logo"}
-          height={90}
-          width={(90 * 31.41) / 49.18}
-          style={{ position: "absolute", top: 13, left: 0 }}
+          height={isMobile ? 67.5 : 90}
+          style={{ position: "absolute", top: 0, left: 0 }}
         />
       </Box>
       <Typography
         variant="h5"
+        fontWeight={"light"}
         sx={{
           opacity: startAnimation ? 1 : 0,
           transition: "opacity 1s ease 0.5s",
@@ -57,7 +61,9 @@ const BotTitle: React.FC = () => {
         textAlign={"center"}
         color={"staticColor.whiteText"}
       >
-        We gather the gems, so you don’t have to dig.
+        Twitter(X) accounts for
+        {isMobile ? <br /> : " "}
+        Lovelive Seiyuu images archive
       </Typography>
     </Stack>
   );

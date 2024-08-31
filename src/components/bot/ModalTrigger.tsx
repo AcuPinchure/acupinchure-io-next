@@ -32,7 +32,7 @@ const ModalTrigger: React.FC<ModalTriggerProps> = ({
     <>
       <Button
         variant="text"
-        color="secondary"
+        color="info"
         endIcon={<ArrowRight />}
         onClick={() => setOpen(true)}
       >
@@ -47,7 +47,14 @@ const ModalTrigger: React.FC<ModalTriggerProps> = ({
         {title && <DialogTitle>{title}</DialogTitle>}
         {content && <DialogContent>{content}</DialogContent>}
         <DialogActions>
-          <Button onClick={() => setOpen(false)}>Close</Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setOpen(false)}
+            disableElevation
+          >
+            Close
+          </Button>
         </DialogActions>
       </Dialog>
     </>

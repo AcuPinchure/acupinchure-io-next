@@ -14,7 +14,6 @@ const StudioTitle: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const theme = useTheme();
-
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [startAnimation, setStartAnimation] = useState(false);
@@ -35,7 +34,7 @@ const StudioTitle: React.FC = () => {
     new Vara("#vara-container", "/vara/Parisienne.json", [
       {
         text: "AcuPinchure Studio",
-        fontSize: 40,
+        fontSize: isMobile ? 30 : 40,
         strokeWidth: 1.5,
         color: theme.palette.staticColor.whiteText,
         duration: 1500,
@@ -49,7 +48,7 @@ const StudioTitle: React.FC = () => {
       <Box
         component={"div"}
         id="vara-container"
-        width={isMobile ? 400 : 600}
+        width={isMobile ? 300 : 600}
         ref={containerRef}
         aria-label="AcuPinchure Studio"
         role="heading"
@@ -57,6 +56,7 @@ const StudioTitle: React.FC = () => {
       ></Box>
       <Typography
         variant="h5"
+        fontWeight={"light"}
         sx={{
           opacity: startAnimation ? 1 : 0,
           transition: "opacity 1s ease 1.2s",
@@ -64,7 +64,7 @@ const StudioTitle: React.FC = () => {
         color={"staticColor.whiteText"}
         textAlign={"center"}
       >
-        My imagination playground
+        My illustration playground
       </Typography>
     </Stack>
   );

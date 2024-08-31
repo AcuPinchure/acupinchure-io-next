@@ -3,10 +3,22 @@
 import { useColorScheme } from "@mui/material/styles";
 
 import React, { useState } from "react";
-import { IconButton, Popover, MenuItem, Typography, Menu } from "@mui/material";
+import {
+  IconButton,
+  Popover,
+  MenuItem,
+  Typography,
+  Menu,
+  Stack,
+  Button,
+} from "@mui/material";
 import { Sun, Moon } from "@phosphor-icons/react";
 
-const ThemeModeSwitcher: React.FC = () => {
+interface ThemeModeSwitcherProps {
+  showText?: boolean;
+}
+
+const ThemeModeSwitcher: React.FC<ThemeModeSwitcherProps> = ({ showText }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const { mode, systemMode, setMode } = useColorScheme();
 
@@ -26,11 +38,27 @@ const ThemeModeSwitcher: React.FC = () => {
   const open = Boolean(anchorEl);
   const id = open ? "dark-mode-popover" : undefined;
 
+  const icon = (systemMode || mode) === "dark" ? <Moon /> : <Sun />;
+
   return (
-    <>
-      <IconButton onClick={handleClick} aria-describedby={id} color="inherit">
-        {(systemMode || mode) === "dark" ? <Moon /> : <Sun />}
-      </IconButton>
+    <Stack alignItems={"center"} direction="row" justifyContent={"flex-start"}>
+      {showText ? (
+        <Button
+          startIcon={icon}
+          onClick={handleClick}
+          variant="contained"
+          color="primary"
+          disableElevation
+          sx={{ fontSize: "1rem", fontWeight: 300 }}
+        >
+          Theme Mode
+        </Button>
+      ) : (
+        <IconButton onClick={handleClick} aria-describedby={id} color="inherit">
+          {icon}
+        </IconButton>
+      )}
+
       <Menu
         id={id}
         open={open}
@@ -69,7 +97,7 @@ const ThemeModeSwitcher: React.FC = () => {
         <MenuItem onClick={() => handleModeChange("dark")}>Dark</MenuItem>
         <MenuItem onClick={() => handleModeChange("system")}>System</MenuItem>
       </Menu>
-    </>
+    </Stack>
   );
 };
 

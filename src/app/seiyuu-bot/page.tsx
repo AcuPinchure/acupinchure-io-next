@@ -8,7 +8,11 @@ import ModalTrigger from "@/components/bot/ModalTrigger";
 const SeiyuuBotPage: React.FC = () => {
   return (
     <Stack direction={"column"}>
-      <Banner background={"/images/minecraft_banner.jpg"}>
+      <Banner
+        background={"/images/bot_banner.jpg"}
+        backgroundPosition="0% 0%"
+        brightness={0.5}
+      >
         <BotTitle />
       </Banner>
       <Container maxWidth={"xl"}>
