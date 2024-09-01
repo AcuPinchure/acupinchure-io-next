@@ -9,7 +9,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { ArrowRight } from "@phosphor-icons/react";
+import { Info } from "@phosphor-icons/react/dist/ssr";
 import { useState } from "react";
 
 interface ModalTriggerProps {
@@ -33,7 +33,7 @@ const ModalTrigger: React.FC<ModalTriggerProps> = ({
       <Button
         variant="text"
         color="info"
-        endIcon={<ArrowRight />}
+        endIcon={<Info />}
         onClick={() => setOpen(true)}
       >
         {trigger}
@@ -51,7 +51,6 @@ const ModalTrigger: React.FC<ModalTriggerProps> = ({
             variant="contained"
             color="primary"
             onClick={() => setOpen(false)}
-            disableElevation
           >
             Close
           </Button>
