@@ -35,7 +35,7 @@ const theme = createTheme({
           whiteText: "#f5f5f5",
         },
         background: {
-          default: "#291b00",
+          default: "#1a1100",
           paper: "#202020",
         },
       },
@@ -124,6 +124,9 @@ const theme = createTheme({
   },
   components: {
     MuiButton: {
+      defaultProps: {
+        disableElevation: true,
+      },
       styleOverrides: {
         root: {
           textTransform: "none",

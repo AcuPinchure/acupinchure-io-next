@@ -5,70 +5,40 @@ import Banner from "@/components/Banner";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Box, Grid2 as Grid, useMediaQuery, useTheme } from "@mui/material";
-import BotLink from "@/components/titles/BotLink";
-import MCServerLink from "@/components/titles/MCServerLink";
-import StudioLink from "@/components/titles/StudioLink";
 import WelcomeTitle from "@/components/titles/WelcomeTitle";
+import ProjectLink from "@/components/titles/ProjectLink";
 
 const HomePage: React.FC = () => {
+  const links = [
+    {
+      title: "Lovelive Seiyuu Bot",
+      description:
+        "Series of Twitter(X) bot accounts posting Lovelive Seiyuu images",
+      href: "/seiyuu-bot",
+      logoURL: "/images/bot/bot_L_logo.svg",
+      logoPadding: 40,
+    },
+    {
+      title: "Minecraft Server",
+      description: "Vanilla game experience with stunning landscape",
+      href: "/minecraft-server",
+      logoURL: "/images/minecraft_logo.svg",
+      logoPadding: 40,
+    },
+    {
+      title: "AcuPinchure Studio",
+      description: "Illustration for favorite characters and original works",
+      href: "/studio",
+      logoURL: "/images/studio_logo.png",
+    },
+  ];
+
   return (
     <Stack direction={"column"}>
       <Banner background={"/images/home_banner.jpg"} brightness={0.5}>
         <WelcomeTitle />
       </Banner>
-      <Box component={"section"} p={4}>
-        <Container maxWidth={"xl"}>
-          <Grid container spacing={0} rowSpacing={4} minHeight={"100vh"}>
-            <Grid
-              size={{
-                sm: 12,
-                md: 6,
-                lg: 4,
-              }}
-              display={"flex"}
-              direction={"column"}
-              justifyContent={"center"}
-              alignItems={"center"}
-            >
-              <Box bgcolor={"lightgray"} width={"80%"} height={300} />
-            </Grid>
-            <Grid
-              size={{
-                sm: 12,
-                md: 6,
-                lg: 8,
-              }}
-              display={"flex"}
-              direction={"column"}
-              justifyContent={"center"}
-              alignItems={"center"}
-            >
-              <Stack
-                direction={"column"}
-                height={"100%"}
-                justifyContent={"center"}
-                alignItems={"center"}
-                color={"text.primary"}
-                spacing={4}
-              >
-                <Typography variant="h3" textAlign={"center"}>
-                  Who is AcuPinchure ?
-                </Typography>
-                <Typography
-                  variant="body1"
-                  textAlign={"center"}
-                  maxWidth={"50rem"}
-                >
-                  I am a full-stack developer and amateur illustrator. I am
-                  passionate about creating and sharing my works with the world.
-                  I am also a fan of anime and seiyuu events.
-                </Typography>
-              </Stack>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-      <Box component={"section"} p={4}>
+      <Box component={"section"} p={2}>
         <Container maxWidth={"xl"}>
           <Stack
             direction={"column"}
@@ -76,39 +46,34 @@ const HomePage: React.FC = () => {
             alignItems={"stretch"}
             justifyContent={"center"}
             color={"text.primary"}
-            spacing={6}
+            spacing={4}
           >
             <Typography variant="h3" textAlign={"center"}>
               Explore My Projects
             </Typography>
-            <Grid container spacing={0} rowGap={4}>
-              <Grid
-                size={{
-                  sm: 12,
-                  md: 6,
-                  lg: 4,
-                }}
-              >
-                <BotLink />
-              </Grid>
-              <Grid
-                size={{
-                  sm: 12,
-                  md: 6,
-                  lg: 4,
-                }}
-              >
-                <MCServerLink />
-              </Grid>
-              <Grid
-                size={{
-                  sm: 12,
-                  md: 6,
-                  lg: 4,
-                }}
-              >
-                <StudioLink />
-              </Grid>
+            <Grid
+              container
+              spacing={0}
+              rowGap={4}
+              justifyContent={"center"}
+              columns={12}
+            >
+              {links.map((link) => (
+                <Grid
+                  size={{
+                    sm: 12,
+                    md: 6,
+                    lg: 4,
+                  }}
+                  display={"flex"}
+                  direction={"column"}
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                  key={link.title}
+                >
+                  <ProjectLink {...link} />
+                </Grid>
+              ))}
             </Grid>
           </Stack>
         </Container>

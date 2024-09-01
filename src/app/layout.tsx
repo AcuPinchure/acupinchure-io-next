@@ -33,11 +33,12 @@ export default function RootLayout({
           href="/images/acupinchure_v2.svg"
           sizes="any"
         />
+        <style></style>
       </head>
       <body>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            <CssBaseline />
+            <CssBaseline enableColorScheme />
             <InitColorSchemeScript attribute="class" />
             <TopBar />
             {children}
