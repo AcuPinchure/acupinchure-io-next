@@ -34,7 +34,7 @@ const StudioTitle: React.FC = () => {
     new Vara("#vara-container", "/vara/Parisienne.json", [
       {
         text: "AcuPinchure Studio",
-        fontSize: isMobile ? 30 : 40,
+        fontSize: 36,
         strokeWidth: 1.5,
         color: theme.palette.staticColor.whiteText,
         duration: 1500,
@@ -48,7 +48,7 @@ const StudioTitle: React.FC = () => {
       <Box
         component={"div"}
         id="vara-container"
-        width={isMobile ? 300 : 600}
+        width={isMobile ? 320 : 580}
         ref={containerRef}
         aria-label="AcuPinchure Studio"
         role="heading"

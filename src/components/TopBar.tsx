@@ -19,7 +19,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { List as ListIcon } from "@phosphor-icons/react";
+import { List as ListIcon } from "@phosphor-icons/react/dist/ssr";
 
 const TopBar: React.FC = () => {
   const [isTransparent, setIsTransparent] = useState(true);
@@ -114,7 +114,12 @@ const TopBar: React.FC = () => {
         }}
       >
         {isMobile && <Box sx={{ flex: 1 }} />}
-        <IconButton aria-label="LOGO" sx={{ padding: 0 }} color="inherit">
+        <IconButton
+          aria-label="LOGO"
+          sx={{ padding: 0 }}
+          color="inherit"
+          href="/"
+        >
           <MainLogoIcon sx={{ fontSize: "3.5rem", color: "inherit" }} />
         </IconButton>
         {isMobile ? (

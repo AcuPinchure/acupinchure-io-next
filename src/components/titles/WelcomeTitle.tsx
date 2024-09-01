@@ -41,7 +41,7 @@ const WelcomeTitle: React.FC = () => {
           textAlign={"center"}
         >
           Full-stack
-          {isMobile ? <br /> : ", "}Illustrator
+          {isMobile ? <br /> : ", "}Gamer
           {isMobile ? <br /> : ", "}Anime hobbyist
         </Typography>
       </Collapse>

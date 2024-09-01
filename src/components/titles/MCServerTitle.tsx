@@ -1,6 +1,7 @@
 "use client";
 
 import { Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const MCServerTitle: React.FC = () => {
@@ -20,24 +21,58 @@ const MCServerTitle: React.FC = () => {
       direction={"column"}
       alignItems={"center"}
       color={"staticColor.whiteText"}
+      spacing={1}
     >
-      <Stack direction={"row"} spacing={"0.75rem"}>
+      <Stack
+        direction={isMobile ? "column" : "row"}
+        spacing={isMobile ? 0 : "0.75rem"}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
         <Typography
           variant="h3"
-          textAlign={"right"}
+          textAlign={isMobile ? "center" : "right"}
           color="inherit"
-          sx={{
-            transition: "width 1s ease",
-            width: startAnimation ? "15.5rem" : 0,
-            overflow: "hidden",
-          }}
+          sx={
+            isMobile
+              ? {
+                  transition: "height 1s ease",
+                  height: startAnimation ? "3rem" : 0,
+                  overflow: "hidden",
+                }
+              : {
+                  transition: "width 1s ease",
+                  width: startAnimation ? "15.5rem" : 0,
+                  overflow: "hidden",
+                }
+          }
         >
           AcuPinchure
         </Typography>
-        <Typography variant="h3" color="inherit">
-          Minecraft
-        </Typography>
-        <Typography variant="h3" textAlign={"left"} color="inherit">
+        <Image
+          src="/images/minecraft_logo.svg"
+          alt="Minecraft Logo"
+          height={40}
+          width={40}
+        />
+        <Typography
+          variant="h3"
+          color="inherit"
+          textAlign={isMobile ? "center" : "left"}
+          sx={
+            isMobile
+              ? {
+                  transition: "height 1s ease",
+                  height: startAnimation ? "3rem" : 0,
+                  overflow: "hidden",
+                }
+              : {
+                  transition: "width 1s ease",
+                  width: startAnimation ? "9rem" : 0,
+                  overflow: "hidden",
+                }
+          }
+        >
           Server
         </Typography>
       </Stack>
@@ -50,7 +85,9 @@ const MCServerTitle: React.FC = () => {
           transition: "opacity 1s ease 0.5s",
         }}
       >
-        Vanilla game experience with stunning landscape
+        Vanilla Minecraft experience
+        {isMobile ? <br /> : " "}
+        with stunning landscape
       </Typography>
     </Stack>
   );

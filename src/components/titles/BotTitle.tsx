@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Image from "next/image";
@@ -14,9 +13,13 @@ const BotTitle: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  function handleLoad() {
+    setStartAnimation(true);
+  }
+
   useEffect(() => {
     setTimeout(() => {
-      setStartAnimation(true);
+      handleLoad();
     }, 500);
   }, []);
 
@@ -37,17 +40,19 @@ const BotTitle: React.FC = () => {
           width={startAnimation ? (isMobile ? 300 : 400) : 0}
           height={isMobile ? 67.5 : 90}
         >
-          <img
+          <Image
             src={"/images/bot/bot_logo.svg"}
             alt={"Lovelive Seiyuu Bot"}
             height={isMobile ? 67.5 : 90}
+            width={((isMobile ? 67.5 : 90) / 5492) * 23201}
             style={{ position: "absolute", top: 0, left: 0 }}
           />
         </Box>
-        <img
+        <Image
           src={"/images/bot/bot_L_logo.svg"}
           alt={"Image Bot-Logo"}
           height={isMobile ? 67.5 : 90}
+          width={((isMobile ? 67.5 : 90) / 5492) * 3884}
           style={{ position: "absolute", top: 0, left: 0 }}
         />
       </Box>

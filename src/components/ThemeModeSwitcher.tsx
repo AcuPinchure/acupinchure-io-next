@@ -12,7 +12,7 @@ import {
   Stack,
   Button,
 } from "@mui/material";
-import { Sun, Moon } from "@phosphor-icons/react";
+import { Sun, Moon } from "@phosphor-icons/react/dist/ssr";
 
 interface ThemeModeSwitcherProps {
   showText?: boolean;
@@ -48,7 +48,6 @@ const ThemeModeSwitcher: React.FC<ThemeModeSwitcherProps> = ({ showText }) => {
           onClick={handleClick}
           variant="contained"
           color="primary"
-          disableElevation
           sx={{ fontSize: "1rem", fontWeight: 300 }}
         >
           Theme Mode

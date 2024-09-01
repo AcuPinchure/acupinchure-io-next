@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import Image from "next/image";
 
 interface BannerProps {
   children: React.ReactNode;
@@ -17,27 +18,24 @@ const Banner: React.FC<BannerProps> = ({
     <Box
       display={"flex"}
       justifyContent={"center"}
+      position={"relative"}
       alignItems={"center"}
-      height={"100vh"}
+      height={"100lvh"}
       width={"100%"}
       overflow={"hidden"}
       p={2}
+      bgcolor={`#4f4f4f`}
     >
-      <Box
-        height={"100%"}
-        width={"100%"}
-        position={"absolute"}
-        top={0}
-        left={0}
-        zIndex={-1}
-        sx={{
-          background: `url(${background})`,
-          backgroundSize: "cover",
-          backgroundPosition: backgroundPosition,
-          filter: `brightness(${brightness})`,
-        }}
+      <Image
+        id="banner-background"
+        src={background}
+        fill
+        alt="Banner Background"
+        objectFit={"cover"}
+        objectPosition={backgroundPosition}
+        style={{ filter: `brightness(${brightness})` }}
       />
-      {children}
+      <Box zIndex={1}>{children}</Box>
     </Box>
   );
 };
