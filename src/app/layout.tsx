@@ -27,12 +27,37 @@ export default function RootLayout({
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
+
         <link
           rel="icon"
-          type="image/svg"
-          href="/images/acupinchure_v2.svg"
-          sizes="any"
+          type="image/png"
+          href="/icons/favicon-48x48.png"
+          sizes="48x48"
         />
+        <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+        <link rel="shortcut icon" href="/icons/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/icons/apple-touch-icon.png"
+        />
+        <meta name="apple-mobile-web-app-title" content="AcuPinchure" />
+        <link rel="manifest" href="/icons/site.webmanifest" />
+
+        <meta name="title" content="AcuPinchure" />
+        <meta
+          name="description"
+          content="I am a full stack developer, illustrator, and anime hobbyist. Discover everything about AcuPinchure in this site."
+        />
+        <meta
+          name="keywords"
+          content="acupinchure, portfolio, acupinchure studio, full-stack, lovelive, seiyuu bot, illustrator"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="14 days" />
+        <meta name="author" content="AcuPinchure" />
         <style></style>
       </head>
       <body>
