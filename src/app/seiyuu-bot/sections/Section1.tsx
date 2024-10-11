@@ -2,13 +2,14 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Box, Grid2 as Grid } from "@mui/material";
 import ModalTrigger from "@/components/bot/ModalTrigger";
+import Image from "next/image";
 
 const Section1: React.FC = () => (
   <Box component={"section"} p={4}>
     <Grid container spacing={0} rowSpacing={4} py={8}>
       <Grid
         size={{
-          sm: 12,
+          xs: 12,
           md: 6,
           lg: 4,
         }}
@@ -17,11 +18,26 @@ const Section1: React.FC = () => (
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <Box bgcolor={"lightgray"} width={"80%"} height={300} />
+        <Box
+          position={"relative"}
+          height={"350px"}
+          width={"250px"}
+          overflow={"hidden"}
+          p={2}
+          borderRadius={2}
+        >
+          <Image
+            src={"/images/bot/about_images/tweet_demo.jpg"}
+            fill
+            alt="Twitter Notification"
+            objectFit={"cover"}
+            objectPosition={"center"}
+          />
+        </Box>
       </Grid>
       <Grid
         size={{
-          sm: 12,
+          xs: 12,
           md: 6,
           lg: 8,
         }}

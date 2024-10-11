@@ -1,15 +1,12 @@
 import Stack from "@mui/material/Stack";
-import Banner from "@/components/Banner";
 import Typography from "@mui/material/Typography";
-import MCServerTitle from "@/components/titles/MCServerTitle";
 import { Box, Container } from "@mui/material";
+import MCBanner from "@/components/minecraft/MCBanner";
 
 const MinecraftServerPage: React.FC = () => {
   return (
     <Stack direction={"column"}>
-      <Banner background={"/images/minecraft_banner.jpg"}>
-        <MCServerTitle />
-      </Banner>
+      <MCBanner />
       <Box component={"section"} p={4}>
         <Container maxWidth={"xl"}>
           <Stack

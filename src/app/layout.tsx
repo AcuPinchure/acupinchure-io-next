@@ -54,7 +54,7 @@ export default function RootLayout({
           content="acupinchure, portfolio, acupinchure studio, full-stack, lovelive, seiyuu bot, illustrator"
         />
         <meta name="robots" content="index, follow" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
         <meta name="revisit-after" content="14 days" />
         <meta name="author" content="AcuPinchure" />

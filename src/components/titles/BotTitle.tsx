@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Button, useMediaQuery, useTheme } from "@mui/material";
+import { ArrowDown, CaretDown } from "@phosphor-icons/react/dist/ssr";
 
 const BotTitle: React.FC = () => {
   const [startAnimation, setStartAnimation] = useState(false);
@@ -15,6 +16,12 @@ const BotTitle: React.FC = () => {
 
   function handleLoad() {
     setStartAnimation(true);
+  }
+
+  function scrollToFoot() {
+    document
+      .getElementById("page-foot")
+      ?.scrollIntoView({ behavior: "smooth" });
   }
 
   useEffect(() => {
@@ -56,20 +63,37 @@ const BotTitle: React.FC = () => {
           style={{ position: "absolute", top: 0, left: 0 }}
         />
       </Box>
-      <Typography
-        variant="h5"
-        fontWeight={"light"}
+      <Stack
+        direction={"column"}
+        alignItems={"center"}
+        spacing={2}
         sx={{
           opacity: startAnimation ? 1 : 0,
           transition: "opacity 1s ease 0.5s",
         }}
-        textAlign={"center"}
-        color={"staticColor.whiteText"}
       >
-        Twitter(X) accounts for
-        {isMobile ? <br /> : " "}
-        Lovelive Seiyuu images archive
-      </Typography>
+        <Typography
+          variant="h5"
+          fontWeight={"light"}
+          textAlign={"center"}
+          color={"staticColor.whiteText"}
+        >
+          Twitter accounts for
+          {isMobile ? <br /> : " "}
+          Lovelive Seiyuu images archive
+        </Typography>
+        <Button
+          size="large"
+          variant="contained"
+          onClick={scrollToFoot}
+          sx={{
+            backgroundColor: "staticColor.lightMain",
+            color: "rgba(0,0,0,0.87)",
+          }}
+        >
+          View On Twitter
+        </Button>
+      </Stack>
     </Stack>
   );
 };

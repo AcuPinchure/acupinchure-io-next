@@ -49,7 +49,25 @@ const HomePage: React.FC = () => {
             spacing={4}
           >
             <Typography variant="h3" textAlign={"center"}>
-              Explore My Projects
+              About me
+            </Typography>
+            <Typography variant="body1" textAlign={"center"}>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
+              quos in eos, error libero cupiditate accusantium, odio repudiandae
+              doloribus quam modi sed doloremque recusandae repellat saepe vitae
+              quis distinctio atque.
+            </Typography>
+          </Stack>
+          <Stack
+            direction={"column"}
+            minHeight={"100vh"}
+            alignItems={"stretch"}
+            justifyContent={"center"}
+            color={"text.primary"}
+            spacing={4}
+          >
+            <Typography variant="h3" textAlign={"center"}>
+              Some Fun Projects
             </Typography>
             <Grid
               container

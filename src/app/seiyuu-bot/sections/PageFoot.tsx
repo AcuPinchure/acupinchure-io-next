@@ -72,9 +72,9 @@ const PageFoot: React.FC = () => {
       id="page-foot"
       color={"text.primary"}
       sx={{
-        backgroundColor: "#1b0938",
+        backgroundColor: "#200845",
         ...theme.applyStyles("light", {
-          backgroundColor: "#bc97e5",
+          backgroundColor: "#fae3cf",
         }),
       }}
     >
@@ -101,7 +101,7 @@ const PageFoot: React.FC = () => {
         {avatars.map((avatar) => (
           <Grid
             size={{
-              sm: 12,
+              xs: 12,
               md: 4,
             }}
             display={"flex"}
@@ -161,8 +161,8 @@ const PageFoot: React.FC = () => {
                 See
               </Typography>
               <Button
+                color="info"
                 endIcon={<Info />}
-                sx={{ color: "text.primary", textDecoration: "underline" }}
                 onClick={() => setOpenDialog(true)}
               >
                 the list of all Lovelive Seiyuu Bot accounts by other users
@@ -184,13 +184,14 @@ const PageFoot: React.FC = () => {
             <ul>
               {accountList.map((account) => (
                 <li key={account.screenName}>
-                  <a
+                  <Button
                     href={`https://twitter.com/${account.screenName}`}
                     target="_blank"
                     rel="noreferrer"
+                    color="info"
                   >
                     {account.name}
-                  </a>
+                  </Button>
                 </li>
               ))}
             </ul>

@@ -17,6 +17,7 @@ declare module "@mui/material/styles" {
   interface PaletteOptions {
     staticColor?: {
       whiteText?: string;
+      lightMain?: string;
     };
   }
 }
@@ -33,6 +34,7 @@ const theme = createTheme({
         },
         staticColor: {
           whiteText: "#f5f5f5",
+          lightMain: "#ffc872",
         },
         background: {
           default: "#1a1100",
@@ -50,6 +52,7 @@ const theme = createTheme({
         },
         staticColor: {
           whiteText: "#f5f5f5",
+          lightMain: "#ffc872",
         },
         background: {
           default: "#fff2dd",
