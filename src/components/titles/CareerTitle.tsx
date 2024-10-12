@@ -1,16 +1,8 @@
-"use client";
-
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
+import ScrollToButton from "../ScrollToButton";
 
 const CareerTitle: React.FC = () => {
-  function scrollToExperience() {
-    document
-      .getElementById("experience")
-      ?.scrollIntoView({ behavior: "smooth" });
-  }
-
   return (
     <Stack direction={"column"} alignItems={"center"}>
       <Typography
@@ -35,18 +27,21 @@ const CareerTitle: React.FC = () => {
           performance across full-stack systems—transforming complex challenges
           into optimized outcomes.
         </Typography>
-        <Button
-          size="large"
-          onClick={scrollToExperience}
-          sx={{
-            border: "1px solid",
-            borderColor: "staticColor.lightMain",
-            bgcolor: "transparent",
-            color: "staticColor.lightMain",
+        <ScrollToButton
+          component="button"
+          buttonProps={{
+            size: "large",
+            sx: {
+              border: "1px solid",
+              borderColor: "staticColor.lightMain",
+              bgcolor: "transparent",
+              color: "staticColor.lightMain",
+            },
           }}
+          elementId="experience"
         >
           View My Work History
-        </Button>
+        </ScrollToButton>
       </Stack>
     </Stack>
   );

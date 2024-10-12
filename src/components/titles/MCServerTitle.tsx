@@ -79,6 +79,7 @@ const MCServerTitle: React.FC = () => {
       <Typography
         variant="h5"
         fontWeight={"light"}
+        textAlign={"center"}
         color="inherit"
         sx={{
           opacity: startAnimation ? 1 : 0,

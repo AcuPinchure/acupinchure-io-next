@@ -4,9 +4,18 @@ import Stack from "@mui/material/Stack";
 import Banner from "@/components/Banner";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Box, Grid2 as Grid, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid2 as Grid,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import WelcomeTitle from "@/components/titles/WelcomeTitle";
 import ProjectLink from "@/components/titles/ProjectLink";
+import { ArrowRight, Info } from "@phosphor-icons/react/dist/ssr";
+import ScrollToButton from "@/components/ScrollToButton";
+import Link from "next/link";
 
 const HomePage: React.FC = () => {
   const links = [
@@ -47,6 +56,7 @@ const HomePage: React.FC = () => {
             justifyContent={"center"}
             color={"text.primary"}
             spacing={4}
+            mb={-4}
           >
             <Typography variant="h3" textAlign={"center"}>
               About me
@@ -57,6 +67,34 @@ const HomePage: React.FC = () => {
               doloribus quam modi sed doloremque recusandae repellat saepe vitae
               quis distinctio atque.
             </Typography>
+            <Stack
+              gap={2}
+              alignItems={"center"}
+              justifyContent={"center"}
+              sx={{
+                flexDirection: { xs: "column", sm: "row" },
+              }}
+            >
+              <ScrollToButton
+                component="button"
+                elementId="fun-projects"
+                buttonProps={{
+                  color: "info",
+                  endIcon: <Info />,
+                }}
+              >
+                View My Fun Projects
+              </ScrollToButton>
+              <Button
+                LinkComponent={Link}
+                href="/career"
+                variant="outlined"
+                color="info"
+                endIcon={<ArrowRight />}
+              >
+                View My Career
+              </Button>
+            </Stack>
           </Stack>
           <Stack
             direction={"column"}
@@ -65,6 +103,8 @@ const HomePage: React.FC = () => {
             justifyContent={"center"}
             color={"text.primary"}
             spacing={4}
+            id={"fun-projects"}
+            pt={12}
           >
             <Typography variant="h3" textAlign={"center"}>
               Some Fun Projects

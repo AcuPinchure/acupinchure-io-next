@@ -37,6 +37,7 @@ const IllustWork: React.FC<IllustWorkProps> = ({
   const theme = useTheme();
 
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const img = (
     <Grid
@@ -53,7 +54,7 @@ const IllustWork: React.FC<IllustWorkProps> = ({
         aspectRatio={aspectRatio}
         src={src}
         alt={title}
-        padding={padding}
+        padding={isSmallScreen ? undefined : padding}
       />
     </Grid>
   );
@@ -70,16 +71,35 @@ const IllustWork: React.FC<IllustWorkProps> = ({
       alignItems={isMobile || inverted ? "flex-end" : "flex-start"}
       p={4}
     >
-      <Typography variant="h4" mb={2}>
+      <Typography
+        variant="h4"
+        mb={2}
+        textAlign={isMobile || inverted ? "right" : "left"}
+      >
         {title}
       </Typography>
-      <Typography variant="body1">{date}</Typography>
+      <Typography
+        variant="body1"
+        textAlign={isMobile || inverted ? "right" : "left"}
+      >
+        {date}
+      </Typography>
       {(device || software) && (
-        <Typography variant="body1">
+        <Typography
+          variant="body1"
+          textAlign={isMobile || inverted ? "right" : "left"}
+        >
           {[software, device].join(" - ")}
         </Typography>
       )}
-      {description && <Typography variant="body1">{description}</Typography>}
+      {description && (
+        <Typography
+          variant="body1"
+          textAlign={isMobile || inverted ? "right" : "left"}
+        >
+          {description}
+        </Typography>
+      )}
       {pixivLink && (
         <Button color="info" href={pixivLink}>
           View on Pixiv

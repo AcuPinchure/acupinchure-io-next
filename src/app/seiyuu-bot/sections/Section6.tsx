@@ -1,9 +1,9 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Box, Button, Container, Grid2 as Grid } from "@mui/material";
+import { Box, Grid2 as Grid } from "@mui/material";
 
 const Section6: React.FC = () => (
-  <Box component={"section"} p={4} minHeight={"400px"}>
+  <Box component={"section"} minHeight={"400px"}>
     <Grid container spacing={0} rowSpacing={4} py={8}>
       <Grid
         size={{

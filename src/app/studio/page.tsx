@@ -22,7 +22,7 @@ const StudioPage: React.FC = () => {
           <StudioTitle />
         </Stack>
       </Banner>
-      <Box component={"section"} p={4} minHeight={"100vh"}>
+      <Box component={"section"} minHeight={"100vh"}>
         <Container maxWidth={"xl"} id={"my-works"}>
           <Stack
             direction={"column"}
@@ -31,7 +31,7 @@ const StudioPage: React.FC = () => {
             justifyContent={"center"}
             color={"text.primary"}
             spacing={12}
-            mb={6}
+            my={6}
           >
             <Typography variant="h3" textAlign={"center"}>
               Recent Works

@@ -7,12 +7,11 @@ const MinecraftServerPage: React.FC = () => {
   return (
     <Stack direction={"column"}>
       <MCBanner />
-      <Box component={"section"} p={4}>
+      <Box component={"section"}>
         <Container maxWidth={"xl"}>
           <Stack
             direction={"column"}
             minHeight={"100vh"}
-            m={-4}
             alignItems={"center"}
             justifyContent={"center"}
             color={"text.primary"}

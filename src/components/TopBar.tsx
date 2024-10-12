@@ -140,6 +140,7 @@ const TopBar: React.FC = () => {
                     label={link.label}
                     child={link.child || []}
                     isMobile={true}
+                    onClick={() => setDrawerOpen(false)}
                   />
                 </ListItem>
               );

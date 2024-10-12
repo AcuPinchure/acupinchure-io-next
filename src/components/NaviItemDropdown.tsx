@@ -20,6 +20,7 @@ interface NaviItemDropdownProps {
   child: { label: string; href: string }[];
   isMobile: boolean;
   buttonSX?: ButtonBaseProps["sx"];
+  onClick?: () => void;
 }
 
 const NaviItemDropdown: React.FC<NaviItemDropdownProps> = ({
@@ -27,9 +28,17 @@ const NaviItemDropdown: React.FC<NaviItemDropdownProps> = ({
   child,
   isMobile,
   buttonSX,
+  onClick,
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  function handleClose() {
+    setAnchorEl(null);
+    if (onClick) {
+      onClick();
+    }
+  }
 
   const desktopContent = (
     <>
@@ -45,8 +54,8 @@ const NaviItemDropdown: React.FC<NaviItemDropdownProps> = ({
         anchorEl={anchorEl}
         id="project-menu"
         open={open}
-        onClose={() => setAnchorEl(null)}
-        onClick={() => setAnchorEl(null)}
+        onClose={handleClose}
+        onClick={handleClose}
         slotProps={{
           paper: {
             elevation: 0,
@@ -98,7 +107,12 @@ const NaviItemDropdown: React.FC<NaviItemDropdownProps> = ({
         >
           <nav>
             {child.map((item) => (
-              <MenuItem component={Link} key={item.label} href={item.href}>
+              <MenuItem
+                component={Link}
+                key={item.label}
+                href={item.href}
+                onClick={handleClose}
+              >
                 {item.label}
               </MenuItem>
             ))}

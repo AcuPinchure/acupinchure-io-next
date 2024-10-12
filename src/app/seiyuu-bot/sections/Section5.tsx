@@ -1,11 +1,11 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Box, Button, Container, Grid2 as Grid } from "@mui/material";
+import { Box, Button, Grid2 as Grid } from "@mui/material";
 import { ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
 import ModalTrigger from "@/components/bot/ModalTrigger";
 
 const Section5: React.FC = () => (
-  <Box component={"section"} p={4}>
+  <Box component={"section"}>
     <Grid container spacing={0} rowSpacing={4} py={8}>
       <Grid
         size={{
@@ -32,7 +32,13 @@ const Section5: React.FC = () => (
             most with fans. This means our libraries continuously improve to
             feature your favorites.
           </Typography>
-          <Stack direction={"row"} spacing={1}>
+          <Stack
+            gap={2}
+            alignItems={"center"}
+            sx={{
+              flexDirection: { xs: "column", sm: "row" },
+            }}
+          >
             <ModalTrigger
               trigger={"How do we collect data"}
               title={"What data do we collect ?"}

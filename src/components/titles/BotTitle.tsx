@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Button, useMediaQuery, useTheme } from "@mui/material";
-import { ArrowDown, CaretDown } from "@phosphor-icons/react/dist/ssr";
+import ScrollToButton from "../ScrollToButton";
 
 const BotTitle: React.FC = () => {
   const [startAnimation, setStartAnimation] = useState(false);
@@ -16,12 +16,6 @@ const BotTitle: React.FC = () => {
 
   function handleLoad() {
     setStartAnimation(true);
-  }
-
-  function scrollToFoot() {
-    document
-      .getElementById("page-foot")
-      ?.scrollIntoView({ behavior: "smooth" });
   }
 
   useEffect(() => {
@@ -82,17 +76,20 @@ const BotTitle: React.FC = () => {
           {isMobile ? <br /> : " "}
           Lovelive Seiyuu images archive
         </Typography>
-        <Button
-          size="large"
-          variant="contained"
-          onClick={scrollToFoot}
-          sx={{
-            backgroundColor: "staticColor.lightMain",
-            color: "rgba(0,0,0,0.87)",
+        <ScrollToButton
+          component="button"
+          elementId="page-foot"
+          buttonProps={{
+            size: "large",
+            variant: "contained",
+            sx: {
+              backgroundColor: "staticColor.lightMain",
+              color: "rgba(0,0,0,0.87)",
+            },
           }}
         >
-          View On Twitter
-        </Button>
+          View on Twitter
+        </ScrollToButton>
       </Stack>
     </Stack>
   );

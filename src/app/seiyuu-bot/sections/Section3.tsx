@@ -1,11 +1,11 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Box, Button, Container, Grid2 as Grid } from "@mui/material";
+import { Box, Button, Grid2 as Grid } from "@mui/material";
 import { ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 
 const Section3: React.FC = () => (
-  <Box component={"section"} p={4}>
+  <Box component={"section"}>
     <Grid container spacing={0} rowSpacing={4} py={8}>
       <Grid
         size={{
