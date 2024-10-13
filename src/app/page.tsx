@@ -1,5 +1,3 @@
-"use client";
-
 import Stack from "@mui/material/Stack";
 import Banner from "@/components/Banner";
 import Typography from "@mui/material/Typography";
@@ -16,6 +14,58 @@ import ProjectLink from "@/components/titles/ProjectLink";
 import { ArrowRight, Info } from "@phosphor-icons/react/dist/ssr";
 import ScrollToButton from "@/components/ScrollToButton";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AcuPinchure",
+  description:
+    "I am a full stack developer, illustrator, and anime hobbyist. Discover everything about AcuPinchure in this site.",
+  keywords: [
+    "acupinchure",
+    "portfolio",
+    "acupinchure studio",
+    "full-stack",
+    "lovelive",
+    "seiyuu bot",
+    "illustrator",
+  ],
+  robots: "index, follow",
+  authors: [
+    {
+      name: "AcuPinchure",
+    },
+  ],
+  other: {
+    "revisit-after": "14 days",
+    "Content-Type": "text/html; charset=utf-8",
+  },
+  icons: [
+    {
+      rel: "icon",
+      type: "image/png",
+      url: "/icons/favicon-48x48.png",
+      sizes: "48x48",
+    },
+    {
+      rel: "icon",
+      type: "image/svg+xml",
+      url: "/icons/favicon.svg",
+    },
+    {
+      rel: "shortcut icon",
+      url: "/icons/favicon.ico",
+    },
+    {
+      rel: "apple-touch-icon",
+      sizes: "180x180",
+      url: "/icons/apple-touch-icon.png",
+    },
+  ],
+  manifest: "/icons/site.webmanifest",
+  appleWebApp: {
+    title: "AcuPinchure",
+  },
+};
 
 const HomePage: React.FC = () => {
   const links = [
@@ -62,10 +112,10 @@ const HomePage: React.FC = () => {
               About me
             </Typography>
             <Typography variant="body1" textAlign={"center"}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-              quos in eos, error libero cupiditate accusantium, odio repudiandae
-              doloribus quam modi sed doloremque recusandae repellat saepe vitae
-              quis distinctio atque.
+              I am a full stack engineer from Taiwan. I love to create fun and
+              interesting projects. I am also an illustrator and a fan of
+              Lovelive Series. I am always looking for new opportunities to
+              learn and grow.
             </Typography>
             <Stack
               gap={2}

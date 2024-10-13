@@ -9,7 +9,7 @@ const Section3: React.FC = () => (
     <Grid container spacing={0} rowSpacing={4} py={8}>
       <Grid
         size={{
-          sm: 12,
+          xs: 12,
           md: 6,
           lg: 4,
         }}
@@ -37,7 +37,7 @@ const Section3: React.FC = () => (
       </Grid>
       <Grid
         size={{
-          sm: 12,
+          xs: 12,
           md: 6,
           lg: 8,
         }}

@@ -1,7 +1,50 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Box, Container } from "@mui/material";
-import MCBanner from "@/components/minecraft/MCBanner";
+import MCBanner from "@/components/banners/MCBanner";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Minecraft Server - AcuPinchure",
+  description:
+    "Join the AcuPinchure Minecraft server! We accept both Java and Bedrock versions.",
+  keywords: ["acupinchure", "minecraft", "minecraft server", "whitelist"],
+  robots: "index, follow",
+  authors: [
+    {
+      name: "AcuPinchure",
+    },
+  ],
+  other: {
+    "revisit-after": "14 days",
+    "Content-Type": "text/html; charset=utf-8",
+  },
+  icons: [
+    {
+      rel: "icon",
+      type: "image/png",
+      url: "/icons/favicon-48x48.png",
+      sizes: "48x48",
+    },
+    {
+      rel: "icon",
+      type: "image/svg+xml",
+      url: "/icons/favicon.svg",
+    },
+    {
+      rel: "shortcut icon",
+      url: "/icons/favicon.ico",
+    },
+    {
+      rel: "apple-touch-icon",
+      sizes: "180x180",
+      url: "/icons/apple-touch-icon.png",
+    },
+  ],
+  appleWebApp: {
+    title: "AcuPinchure",
+  },
+};
 
 const MinecraftServerPage: React.FC = () => {
   return (

@@ -9,8 +9,9 @@ import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "@mui/material/styles";
+import Banner from "@/components/Banner";
 
-const StudioTitle: React.FC = () => {
+const StudioBanner: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const theme = useTheme();
@@ -44,30 +45,39 @@ const StudioTitle: React.FC = () => {
   }, []);
 
   return (
-    <Stack direction={"column"} alignItems={"center"}>
-      <Box
-        component={"div"}
-        id="vara-container"
-        width={isMobile ? 320 : 580}
-        ref={containerRef}
-        aria-label="AcuPinchure Studio"
-        role="heading"
-        aria-level={1}
-      ></Box>
-      <Typography
-        variant="h5"
-        fontWeight={"light"}
-        sx={{
-          opacity: startAnimation ? 1 : 0,
-          transition: "opacity 1s ease 1.2s",
-        }}
-        color={"staticColor.whiteText"}
-        textAlign={"center"}
-      >
-        My illustration playground
-      </Typography>
-    </Stack>
+    <Banner
+      background={"/images/studio_banner.jpg"}
+      brightness={0.7}
+      backgroundPosition="80% 50%"
+      onLoad={() => setStartAnimation(true)}
+    >
+      <Stack direction={"column"} alignItems={"center"}>
+        <Stack direction={"column"} alignItems={"center"}>
+          <Box
+            component={"div"}
+            id="vara-container"
+            width={isMobile ? 320 : 580}
+            ref={containerRef}
+            aria-label="AcuPinchure Studio"
+            role="heading"
+            aria-level={1}
+          ></Box>
+          <Typography
+            variant="h5"
+            fontWeight={"light"}
+            sx={{
+              opacity: startAnimation ? 1 : 0,
+              transition: "opacity 1s ease 1.2s",
+            }}
+            color={"staticColor.whiteText"}
+            textAlign={"center"}
+          >
+            My illustration playground
+          </Typography>
+        </Stack>
+      </Stack>
+    </Banner>
   );
 };
 
-export default StudioTitle;
+export default StudioBanner;

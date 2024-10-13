@@ -76,7 +76,7 @@ export const selfIllustrations: illustrationData[] = [
     date: "2022.10.30",
     device: "iPad Air 4",
     software: "Procreate",
-    aspectRatio: 3840 / 2160,
+    aspectRatio: 1555 / 2149,
   },
   {
     src: "IMG_5540",

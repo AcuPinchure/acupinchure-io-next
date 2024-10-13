@@ -49,6 +49,7 @@ const IllustWork: React.FC<IllustWorkProps> = ({
       flexDirection={"column"}
       justifyContent={"center"}
       alignItems={"center"}
+      key={"img"}
     >
       <IllustrationFrame
         aspectRatio={aspectRatio}
@@ -70,6 +71,7 @@ const IllustWork: React.FC<IllustWorkProps> = ({
       justifyContent={"center"}
       alignItems={isMobile || inverted ? "flex-end" : "flex-start"}
       p={4}
+      key={"meta"}
     >
       <Typography
         variant="h4"

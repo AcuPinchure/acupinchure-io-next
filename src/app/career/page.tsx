@@ -15,11 +15,71 @@ import {
 } from "@mui/material";
 import Banner from "@/components/Banner";
 import CareerTitle from "@/components/titles/CareerTitle";
+import { Fragment } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Career - AcuPinchure",
+  description:
+    "Engineering Smarter, Faster, Better. Crafting tailored solutions that drive efficiency, scalability, and performance across full-stack systems—transforming complex challenges into optimized outcomes.",
+  keywords: [
+    "acupinchure",
+    "portfolio",
+    "full-stack",
+    "career",
+    "skills",
+    "experience",
+    "next.js",
+    "react",
+    "django",
+    "elasticsearch",
+    "docker",
+    "google cloud platform",
+    "gitlab",
+  ],
+  robots: "index, follow",
+  authors: [
+    {
+      name: "AcuPinchure",
+    },
+  ],
+  other: {
+    "revisit-after": "14 days",
+    "Content-Type": "text/html; charset=utf-8",
+  },
+  icons: [
+    {
+      rel: "icon",
+      type: "image/png",
+      url: "/icons/favicon-48x48.png",
+      sizes: "48x48",
+    },
+    {
+      rel: "icon",
+      type: "image/svg+xml",
+      url: "/icons/favicon.svg",
+    },
+    {
+      rel: "shortcut icon",
+      url: "/icons/favicon.ico",
+    },
+    {
+      rel: "apple-touch-icon",
+      sizes: "180x180",
+      url: "/icons/apple-touch-icon.png",
+    },
+  ],
+  appleWebApp: {
+    title: "AcuPinchure",
+  },
+};
 
 const CareerPage: React.FC = () => {
   const skills = [
     {
       category: "Frontend",
+      description:
+        "The frontend technologies I have worked with are mostly React ecosystem. Including UI Libraries, State Management, and Server Side Rendering.",
       skills: [
         {
           title: "React",
@@ -27,7 +87,7 @@ const CareerPage: React.FC = () => {
           keypoints: [
             "React Router",
             "Zustand",
-            "Material UI",
+            "Material UI / Semantic UI",
             "Color Scheme with CSS Variables",
             "Bundle Splitting Optimization",
           ],
@@ -46,6 +106,8 @@ const CareerPage: React.FC = () => {
     },
     {
       category: "Backend",
+      description:
+        "I have worked with Django for more than 2 years. I am comfortable with most of the components of Django, including DRF. As a backend developer, besides RDBMS, I have also worked with Elasticsearch for some projects.",
       skills: [
         {
           title: "Django",
@@ -81,6 +143,8 @@ const CareerPage: React.FC = () => {
     },
     {
       category: "DevOps",
+      description:
+        "In order to optimize cost efficiency, I have worked with Docker, GCP, and GitLab CI/CD. I am capable of constructing a full web service using GCP resources, with or without serverless structure.",
       skills: [
         {
           title: "Docker",
@@ -117,22 +181,25 @@ const CareerPage: React.FC = () => {
   const experience = [
     {
       title: "Sinotech",
+      period: "2022.06 - 2024.05",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nullaquos in eos, error libero cupiditate accusantium, odio repudiandae doloribus quam modi sed doloremque recusandae repellat saepe vitae quis distinctio atque.",
+        "Internal web service maintenance and development, including:",
       keypoints: [
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "Construction-related documents composition tools.",
+        "Forum System for onsite engineers.",
+        "Construction journal and progress management system.",
       ],
     },
     {
       title: "Big Data",
+      period: "2024.05 - Present",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nullaquos in eos, error libero cupiditate accusantium, odio repudiandae doloribus quam modi sed doloremque recusandae repellat saepe vitae quis distinctio atque.",
+        "Working with company's Saas products and system optimization.",
       keypoints: [
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        "Survey contract management platform.",
+        "Migrate legancy projects to serverless architecture.",
+        "Cost-efficient GitLab CI/CD runner using serverless functions on Google cloud platform.",
+        'Elasticsearch performance assessment and optimization on our main product: "KEYPO".',
       ],
     },
   ];
@@ -166,7 +233,7 @@ const CareerPage: React.FC = () => {
               }}
             >
               {skills.map((skill, index) => (
-                <>
+                <Fragment key={index}>
                   <Grid
                     size={{
                       xs: 1,
@@ -176,6 +243,9 @@ const CareerPage: React.FC = () => {
                   >
                     <Typography variant="h4" mt={4}>
                       {skill.category}
+                    </Typography>
+                    <Typography variant="body1" mt={2}>
+                      {skill.description}
                     </Typography>
                   </Grid>
                   {skill.skills.map((skill, index) => (
@@ -215,15 +285,9 @@ const CareerPage: React.FC = () => {
                       </Card>
                     </Grid>
                   ))}
-                </>
+                </Fragment>
               ))}
             </Grid>
-            <Typography variant="body1" textAlign={"center"}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla
-              quos in eos, error libero cupiditate accusantium, odio repudiandae
-              doloribus quam modi sed doloremque recusandae repellat saepe vitae
-              quis distinctio atque.
-            </Typography>
           </Stack>
         </Container>
         <Container maxWidth={"md"}>
