@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import Banner from "@/components/Banner";
@@ -13,6 +14,14 @@ const MCBanner: React.FC = () => {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!(isLoaded.banner && isLoaded.logo)) {
+        setIsLoaded({ banner: true, logo: true });
+      }
+    }, 1000);
+  }, []);
 
   const startAnimation = isLoaded.banner && isLoaded.logo;
 

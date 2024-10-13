@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
@@ -19,6 +20,14 @@ const BotBanner: React.FC = () => {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!(isLoaded.banner && isLoaded.logo && isLoaded.logoL)) {
+        setIsLoaded({ banner: true, logoL: true, logo: true });
+      }
+    }, 1000);
+  }, []);
 
   const startAnimation = isLoaded.banner && isLoaded.logo && isLoaded.logoL;
 

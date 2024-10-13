@@ -17,6 +17,8 @@ import Banner from "@/components/Banner";
 import CareerTitle from "@/components/titles/CareerTitle";
 import { Fragment } from "react";
 import type { Metadata } from "next";
+import theme from "@/theme";
+import { Atom } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata: Metadata = {
   title: "Career - AcuPinchure",
@@ -259,6 +261,7 @@ const CareerPage: React.FC = () => {
                       alignItems={"stretch"}
                     >
                       <Card
+                        variant="outlined"
                         sx={{
                           height: "100%",
                         }}
@@ -266,7 +269,14 @@ const CareerPage: React.FC = () => {
                         <CardHeader
                           title={skill.title}
                           avatar={
-                            <Avatar src={skill.imgSrc} alt={skill.title} />
+                            <Avatar
+                              sx={{
+                                color: "var(--mui-pallete-text-primary)",
+                                bgcolor: "var(--mui-pallete-background-paper)",
+                              }}
+                            >
+                              <Atom fontSize={32} />
+                            </Avatar>
                           }
                           sx={{
                             "& .MuiCardHeader-title": {

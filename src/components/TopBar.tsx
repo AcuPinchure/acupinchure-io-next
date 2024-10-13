@@ -27,8 +27,6 @@ const TopBar: React.FC = () => {
 
   const pathname = usePathname();
 
-  const isMobile = useMediaQuery("(max-width:700px)");
-
   function handleScroll() {
     if (window.scrollY > 10) {
       setIsTransparent(false);
@@ -58,7 +56,14 @@ const TopBar: React.FC = () => {
   ];
 
   const desktopNavi = (
-    <nav aria-label="navigation menu" style={{ flex: 1 }}>
+    <Box
+      component={"nav"}
+      aria-label="navigation menu"
+      flex={1}
+      sx={{
+        display: { xs: "none", sm: "block" },
+      }}
+    >
       <Stack spacing={2} direction="row" justifyContent={"flex-end"}>
         {naviLinks.map((link) => {
           const activeSX = {
@@ -104,7 +109,7 @@ const TopBar: React.FC = () => {
         })}
         <ThemeModeSwitcher />
       </Stack>
-    </nav>
+    </Box>
   );
 
   const mobileNavi = (
@@ -116,6 +121,7 @@ const TopBar: React.FC = () => {
       PaperProps={{
         sx: { bgcolor: "primary.main", color: "primary.contrastText" },
       }}
+      sx={{ display: { xs: "block", sm: "none" } }}
     >
       <nav aria-label="navigation menu">
         <List>
@@ -169,7 +175,12 @@ const TopBar: React.FC = () => {
             : "primary.contrastText",
         }}
       >
-        {isMobile && <Box sx={{ flex: 1 }} />}
+        <Box
+          flex={1}
+          sx={{
+            display: { xs: "block", sm: "none" },
+          }}
+        />
         <IconButton
           aria-label="LOGO"
           sx={{ padding: 0 }}
@@ -178,22 +189,22 @@ const TopBar: React.FC = () => {
         >
           <MainLogoIcon sx={{ fontSize: "3.5rem", color: "inherit" }} />
         </IconButton>
-        {isMobile ? (
-          <Stack
-            spacing={2}
-            direction="row"
-            justifyContent={"flex-end"}
-            flex={1}
-          >
-            <IconButton onClick={() => setDrawerOpen(true)} color="inherit">
-              <ListIcon />
-            </IconButton>
-          </Stack>
-        ) : (
-          desktopNavi
-        )}
+        <Stack
+          spacing={2}
+          direction="row"
+          justifyContent={"flex-end"}
+          flex={1}
+          sx={{
+            display: { xs: "flex", sm: "none" },
+          }}
+        >
+          <IconButton onClick={() => setDrawerOpen(true)} color="inherit">
+            <ListIcon />
+          </IconButton>
+        </Stack>
+        {desktopNavi}
       </Toolbar>
-      {isMobile && mobileNavi}
+      {mobileNavi}
     </AppBar>
   );
 };

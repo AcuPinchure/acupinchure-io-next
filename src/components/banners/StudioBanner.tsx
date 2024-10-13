@@ -21,8 +21,10 @@ const StudioBanner: React.FC = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setStartAnimation(true);
-    }, 500);
+      if (!startAnimation) {
+        setStartAnimation(true);
+      }
+    }, 1000);
   }, []);
 
   useEffect(() => {

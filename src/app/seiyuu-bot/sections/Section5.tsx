@@ -56,7 +56,11 @@ const Section5: React.FC = () => (
                   {"You can see the statistics of each account in "}
                   <a
                     href="https://bot.acupinchure.com/stats"
-                    style={{ cursor: "pointer" }}
+                    style={{
+                      cursor: "pointer",
+                      color: "var(--mui-palette-info-main)",
+                      fontWeight: "bold",
+                    }}
                     target="_blank"
                   >
                     the statistics page

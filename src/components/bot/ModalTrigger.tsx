@@ -6,17 +6,28 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Slide,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import type { TransitionProps } from "@mui/material/transitions";
 import { Info } from "@phosphor-icons/react/dist/ssr";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 
 interface ModalTriggerProps {
   trigger: React.ReactNode;
   title?: React.ReactNode;
   content: React.ReactNode;
 }
+
+const Transition = forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement<unknown>;
+  },
+  ref: React.Ref<unknown>
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const ModalTrigger: React.FC<ModalTriggerProps> = ({
   trigger,
@@ -43,6 +54,7 @@ const ModalTrigger: React.FC<ModalTriggerProps> = ({
         onClose={() => setOpen(false)}
         scroll="paper"
         fullScreen={isMobile}
+        TransitionComponent={isMobile ? Transition : undefined}
       >
         {title && <DialogTitle>{title}</DialogTitle>}
         {content && <DialogContent>{content}</DialogContent>}
@@ -51,6 +63,7 @@ const ModalTrigger: React.FC<ModalTriggerProps> = ({
             variant="contained"
             color="primary"
             onClick={() => setOpen(false)}
+            fullWidth={isMobile}
           >
             Close
           </Button>

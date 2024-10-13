@@ -2,27 +2,11 @@
 
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import {
-  Avatar,
-  Box,
-  Button,
-  Container,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Grid2 as Grid,
-  useTheme,
-} from "@mui/material";
+import { Avatar, Box, Button, Container, Grid2 as Grid } from "@mui/material";
 import ModalTrigger from "@/components/bot/ModalTrigger";
-import { useState } from "react";
-import { Info } from "@phosphor-icons/react/dist/ssr";
+import theme from "@/theme";
 
 const PageFoot: React.FC = () => {
-  const [openDialog, setOpenDialog] = useState(false);
-
-  const theme = useTheme();
-
   const avatars = [
     {
       label: "前田佳織里",
@@ -166,62 +150,32 @@ const PageFoot: React.FC = () => {
               <Typography variant="h4" textAlign={"center"} color={"inherit"}>
                 {"Didn't find your favorite seiyuu on the list?"}
               </Typography>
-              <Stack direction={"row"} alignItems={"center"} spacing={1}>
-                <Typography
-                  variant="body1"
-                  textAlign={"center"}
-                  color={"inherit"}
-                >
-                  See
-                </Typography>
-                <Button
-                  color="info"
-                  endIcon={<Info />}
-                  onClick={() => setOpenDialog(true)}
-                >
-                  the list of found Lovelive Seiyuu Bots
-                </Button>
-              </Stack>
+              <ModalTrigger
+                trigger={"See the list of found Lovelive Seiyuu Bots"}
+                title={"List of found Lovelive Seiyuu Bots by other users"}
+                content={
+                  <Typography variant="body1" color="text.primary">
+                    <ul>
+                      {accountList.map((account) => (
+                        <li key={account.screenName}>
+                          <Button
+                            href={`https://twitter.com/${account.screenName}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            color="info"
+                          >
+                            {account.name}
+                          </Button>
+                        </li>
+                      ))}
+                    </ul>
+                  </Typography>
+                }
+              />
             </Stack>
           </Grid>
         </Grid>
       </Container>
-      <Dialog
-        open={openDialog}
-        onClose={() => setOpenDialog(false)}
-        aria-labelledby="dialog-title"
-      >
-        <DialogTitle id="dialog-title">
-          List of found Lovelive Seiyuu Bots by other users
-        </DialogTitle>
-        <DialogContent>
-          <Typography variant="body1" color="text.primary">
-            <ul>
-              {accountList.map((account) => (
-                <li key={account.screenName}>
-                  <Button
-                    href={`https://twitter.com/${account.screenName}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    color="info"
-                  >
-                    {account.name}
-                  </Button>
-                </li>
-              ))}
-            </ul>
-          </Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setOpenDialog(false)}
-          >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
     </Box>
   );
 };
