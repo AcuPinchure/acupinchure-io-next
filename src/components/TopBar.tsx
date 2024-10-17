@@ -14,18 +14,17 @@ import {
   ListItem,
   ListItemButton,
   SwipeableDrawer,
-  Typography,
-  useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { List as ListIcon } from "@phosphor-icons/react/dist/ssr";
+import NaviItemDropdown from "./NaviItemDropdown";
+import { usePathname } from "next/navigation";
 
 const TopBar: React.FC = () => {
   const [isTransparent, setIsTransparent] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const isMobile = useMediaQuery("(max-width:700px)");
+  const pathname = usePathname();
 
   function handleScroll() {
     if (window.scrollY > 10) {
@@ -44,27 +43,72 @@ const TopBar: React.FC = () => {
 
   const naviLinks = [
     { label: "Home", href: "/" },
-    { label: "Seiyuu Bot", href: "/seiyuu-bot" },
-    { label: "Minecraft Server", href: "/minecraft-server" },
-    { label: "AcuPinchure Studio", href: "/studio" },
+    { label: "Career", href: "/career" },
+    {
+      label: "Fun Projects",
+      child: [
+        { label: "Lovelive Seiyuu Bot", href: "/seiyuu-bot" },
+        { label: "Minecraft Server", href: "/minecraft-server" },
+        { label: "AcuPinchure Studio", href: "/studio" },
+      ],
+    },
   ];
 
   const desktopNavi = (
-    <nav aria-label="navigation menu" style={{ flex: 1 }}>
+    <Box
+      component={"nav"}
+      aria-label="navigation menu"
+      flex={1}
+      sx={{
+        display: { xs: "none", sm: "block" },
+      }}
+    >
       <Stack spacing={2} direction="row" justifyContent={"flex-end"}>
-        {naviLinks.map((link) => (
-          <Button
-            color="inherit"
-            component={Link}
-            href={link.href}
-            key={link.label}
-          >
-            {link.label}
-          </Button>
-        ))}
+        {naviLinks.map((link) => {
+          const activeSX = {
+            textDecoration: "underline",
+            textUnderlineOffset: "0.3rem",
+            textDecorationThickness: "2px",
+          };
+
+          if (link.href) {
+            return (
+              <Button
+                color="inherit"
+                LinkComponent={Link}
+                href={link.href}
+                key={link.label}
+                sx={
+                  (pathname.startsWith(link.href) && link.href !== "/") ||
+                  pathname === link.href
+                    ? activeSX
+                    : undefined
+                }
+              >
+                {link.label}
+              </Button>
+            );
+          } else {
+            const children = link.child || [];
+
+            return (
+              <NaviItemDropdown
+                key={link.label}
+                label={link.label}
+                child={children}
+                isMobile={false}
+                buttonSX={
+                  children.some((i) => pathname.startsWith(i.href))
+                    ? activeSX
+                    : undefined
+                }
+              />
+            );
+          }
+        })}
         <ThemeModeSwitcher />
       </Stack>
-    </nav>
+    </Box>
   );
 
   const mobileNavi = (
@@ -76,20 +120,37 @@ const TopBar: React.FC = () => {
       PaperProps={{
         sx: { bgcolor: "primary.main", color: "primary.contrastText" },
       }}
+      sx={{ display: { xs: "block", sm: "none" } }}
     >
       <nav aria-label="navigation menu">
         <List>
-          {naviLinks.map((link) => (
-            <ListItem disableGutters disablePadding key={link.label}>
-              <ListItemButton
-                component={Link}
-                href={link.href}
-                onClick={() => setDrawerOpen(false)}
-              >
-                {link.label}
-              </ListItemButton>
-            </ListItem>
-          ))}
+          {naviLinks.map((link) => {
+            if (link.href) {
+              return (
+                <ListItem disableGutters disablePadding key={link.label}>
+                  <ListItemButton
+                    component={Link}
+                    href={link.href}
+                    onClick={() => setDrawerOpen(false)}
+                  >
+                    {link.label}
+                  </ListItemButton>
+                </ListItem>
+              );
+            } else {
+              return (
+                <ListItem disableGutters disablePadding key={link.label}>
+                  <NaviItemDropdown
+                    key={link.label}
+                    label={link.label}
+                    child={link.child || []}
+                    isMobile={true}
+                    onClick={() => setDrawerOpen(false)}
+                  />
+                </ListItem>
+              );
+            }
+          })}
           <ListItem disableGutters disablePadding sx={{ px: 1 }}>
             <ThemeModeSwitcher showText />
           </ListItem>
@@ -113,7 +174,12 @@ const TopBar: React.FC = () => {
             : "primary.contrastText",
         }}
       >
-        {isMobile && <Box sx={{ flex: 1 }} />}
+        <Box
+          flex={1}
+          sx={{
+            display: { xs: "block", sm: "none" },
+          }}
+        />
         <IconButton
           aria-label="LOGO"
           sx={{ padding: 0 }}
@@ -122,22 +188,22 @@ const TopBar: React.FC = () => {
         >
           <MainLogoIcon sx={{ fontSize: "3.5rem", color: "inherit" }} />
         </IconButton>
-        {isMobile ? (
-          <Stack
-            spacing={2}
-            direction="row"
-            justifyContent={"flex-end"}
-            flex={1}
-          >
-            <IconButton onClick={() => setDrawerOpen(true)} color="inherit">
-              <ListIcon />
-            </IconButton>
-          </Stack>
-        ) : (
-          desktopNavi
-        )}
+        <Stack
+          spacing={2}
+          direction="row"
+          justifyContent={"flex-end"}
+          flex={1}
+          sx={{
+            display: { xs: "flex", sm: "none" },
+          }}
+        >
+          <IconButton onClick={() => setDrawerOpen(true)} color="inherit">
+            <ListIcon />
+          </IconButton>
+        </Stack>
+        {desktopNavi}
       </Toolbar>
-      {isMobile && mobileNavi}
+      {mobileNavi}
     </AppBar>
   );
 };

@@ -6,11 +6,13 @@ interface BannerProps {
   background: string;
   brightness?: number;
   backgroundPosition?: string;
+  onLoad?: () => void;
 }
 
 const Banner: React.FC<BannerProps> = ({
   children,
   background,
+  onLoad,
   brightness = 0.7,
   backgroundPosition = "center",
 }) => {
@@ -31,9 +33,12 @@ const Banner: React.FC<BannerProps> = ({
         src={background}
         fill
         alt="Banner Background"
-        objectFit={"cover"}
-        objectPosition={backgroundPosition}
-        style={{ filter: `brightness(${brightness})` }}
+        style={{
+          filter: `brightness(${brightness})`,
+          objectFit: "cover",
+          objectPosition: backgroundPosition,
+        }}
+        onLoad={onLoad}
       />
       <Box zIndex={1}>{children}</Box>
     </Box>

@@ -1,15 +1,13 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Box, Button, Container, Grid2 as Grid } from "@mui/material";
+import { Box, Grid2 as Grid } from "@mui/material";
 
 const Section6: React.FC = () => (
-  <Box component={"section"} p={4}>
+  <Box component={"section"} minHeight={"400px"}>
     <Grid container spacing={0} rowSpacing={4} py={8}>
       <Grid
         size={{
           sm: 12,
-          md: 6,
-          lg: 8,
         }}
         display={"flex"}
         direction={"column"}
@@ -35,19 +33,6 @@ const Section6: React.FC = () => (
             }
           </Typography>
         </Stack>
-      </Grid>
-      <Grid
-        size={{
-          sm: 12,
-          md: 6,
-          lg: 4,
-        }}
-        display={"flex"}
-        direction={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
-      >
-        <Box bgcolor={"lightgray"} width={"80%"} height={300} />
       </Grid>
     </Grid>
   </Box>

@@ -46,9 +46,7 @@ const ThemeModeSwitcher: React.FC<ThemeModeSwitcherProps> = ({ showText }) => {
         <Button
           startIcon={icon}
           onClick={handleClick}
-          variant="contained"
-          color="primary"
-          sx={{ fontSize: "1rem", fontWeight: 300 }}
+          sx={{ fontSize: "1rem", fontWeight: 300, color: "text.primary" }}
         >
           Theme Mode
         </Button>

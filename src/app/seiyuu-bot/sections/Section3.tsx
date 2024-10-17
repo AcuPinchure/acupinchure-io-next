@@ -1,14 +1,15 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Box, Button, Container, Grid2 as Grid } from "@mui/material";
+import { Box, Button, Grid2 as Grid } from "@mui/material";
 import { ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
 
 const Section3: React.FC = () => (
-  <Box component={"section"} p={4}>
+  <Box component={"section"}>
     <Grid container spacing={0} rowSpacing={4} py={8}>
       <Grid
         size={{
-          sm: 12,
+          xs: 12,
           md: 6,
           lg: 4,
         }}
@@ -17,11 +18,28 @@ const Section3: React.FC = () => (
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <Box bgcolor={"lightgray"} width={"80%"} height={300} />
+        <Box
+          position={"relative"}
+          height={"350px"}
+          width={"350px"}
+          overflow={"hidden"}
+          p={2}
+          borderRadius={2}
+        >
+          <Image
+            src={"/images/bot/about_images/noti_s.png"}
+            fill
+            alt="Twitter Notification"
+            style={{
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+          />
+        </Box>
       </Grid>
       <Grid
         size={{
-          sm: 12,
+          xs: 12,
           md: 6,
           lg: 8,
         }}
@@ -47,10 +65,11 @@ const Section3: React.FC = () => (
             }
           </Typography>
           <Button
-            variant="text"
+            variant="outlined"
             color="info"
             endIcon={<ArrowSquareOut />}
-            href={"https://bot.acupinchure.com/bot/status/"}
+            target="_blank"
+            href={"https://bot.acupinchure.com/status/"}
           >
             See the post interval of each account
           </Button>
