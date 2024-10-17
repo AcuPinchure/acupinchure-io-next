@@ -66,8 +66,10 @@ const Section2: React.FC = () => (
             src={"/images/bot/about_images/collage_s.jpg"}
             fill
             alt="Image Collage"
-            objectFit={"cover"}
-            objectPosition={"center"}
+            style={{
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
           />
         </Box>
       </Grid>

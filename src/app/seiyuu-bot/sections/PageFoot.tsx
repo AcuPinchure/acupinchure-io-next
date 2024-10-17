@@ -1,5 +1,3 @@
-"use client";
-
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Avatar, Box, Button, Container, Grid2 as Grid } from "@mui/material";
@@ -60,10 +58,12 @@ const PageFoot: React.FC = () => {
       id="page-foot"
       color={"text.primary"}
       sx={{
-        backgroundColor: "#200845",
-        ...theme.applyStyles("light", {
+        ".light &": {
           backgroundColor: "#fae3cf",
-        }),
+        },
+        ".dark &": {
+          backgroundColor: "#200845",
+        },
       }}
     >
       <Container maxWidth={"xl"}>

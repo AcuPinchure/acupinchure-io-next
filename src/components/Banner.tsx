@@ -33,9 +33,11 @@ const Banner: React.FC<BannerProps> = ({
         src={background}
         fill
         alt="Banner Background"
-        objectFit={"cover"}
-        objectPosition={backgroundPosition}
-        style={{ filter: `brightness(${brightness})` }}
+        style={{
+          filter: `brightness(${brightness})`,
+          objectFit: "cover",
+          objectPosition: backgroundPosition,
+        }}
         onLoad={onLoad}
       />
       <Box zIndex={1}>{children}</Box>

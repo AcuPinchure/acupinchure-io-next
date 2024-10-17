@@ -182,17 +182,6 @@ const CareerPage: React.FC = () => {
 
   const experience = [
     {
-      title: "Sinotech",
-      period: "2022.06 - 2024.05",
-      description:
-        "Internal web service maintenance and development, including:",
-      keypoints: [
-        "Construction-related documents composition tools.",
-        "Forum System for onsite engineers.",
-        "Construction journal and progress management system.",
-      ],
-    },
-    {
       title: "Big Data",
       period: "2024.05 - Present",
       description:
@@ -202,6 +191,17 @@ const CareerPage: React.FC = () => {
         "Migrate legancy projects to serverless architecture.",
         "Cost-efficient GitLab CI/CD runner using serverless functions on Google cloud platform.",
         'Elasticsearch performance assessment and optimization on our main product: "KEYPO".',
+      ],
+    },
+    {
+      title: "Sinotech",
+      period: "2022.06 - 2024.05",
+      description:
+        "Internal web service maintenance and development, including:",
+      keypoints: [
+        "Construction-related documents composition tools.",
+        "Forum System for onsite engineers.",
+        "Construction journal and progress management system.",
       ],
     },
   ];
@@ -318,7 +318,16 @@ const CareerPage: React.FC = () => {
             <Stepper orientation="vertical">
               {experience.map((exp, index) => (
                 <Step key={index} active>
-                  <StepLabel>
+                  <StepLabel
+                    optional={
+                      <Typography variant="body1">{exp.period}</Typography>
+                    }
+                    sx={{
+                      "& text": {
+                        opacity: 0,
+                      },
+                    }}
+                  >
                     <Typography variant="h5">{exp.title}</Typography>
                   </StepLabel>
                   <StepContent>

@@ -16,13 +16,22 @@ const IllustrationFrame: React.FC<IllustrationFrameProps> = ({
 }) => {
   return (
     <Box
-      width={
-        aspectRatio > 1
-          ? `calc(100% - ${padding * 2}px - 16px)`
-          : `calc(70vh * ${aspectRatio})`
-      }
       maxWidth={`calc(100% - ${padding * 2}px - 16px)`}
       sx={{
+        width: {
+          xs:
+            aspectRatio > 1
+              ? `calc(100% - ${16 * 2}px - 16px)`
+              : `calc(70vh * ${aspectRatio})`,
+          sm:
+            aspectRatio > 1
+              ? `calc(100% - ${padding * 2}px - 16px)`
+              : `calc(70vh * ${aspectRatio})`,
+        },
+        maxWidth: {
+          xs: `calc(100% - ${16 * 2}px - 16px)`,
+          sm: `calc(100% - ${padding * 2}px - 16px)`,
+        },
         backgroundColor: "#ddc",
         border: "solid 16px",
         borderBottomColor: "#9b733f",
@@ -34,7 +43,10 @@ const IllustrationFrame: React.FC<IllustrationFrameProps> = ({
           "0 0 5px 0 rgba(0,0,0,0.25) inset, 0 5px 10px 5px rgba(0,0,0,0.25)",
         boxSizing: "border-box",
         display: "inline-block",
-        padding: `${padding}px`,
+        padding: {
+          xs: "16px",
+          sm: `${padding}px`,
+        },
         margin: "16px",
         position: "relative",
         textAlign: "center",

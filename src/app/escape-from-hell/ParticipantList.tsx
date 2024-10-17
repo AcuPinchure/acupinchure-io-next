@@ -1,13 +1,10 @@
 "use client";
 
 import {
-  Avatar,
   Box,
   Button,
   CircularProgress,
-  Paper,
   Stack,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
@@ -21,6 +18,8 @@ interface EscapeData {
   link: string;
   avaliableDates: string[];
   price: string;
+  isFailed: boolean;
+  failedReason: string;
   participants: Participant[];
 }
 
@@ -31,6 +30,8 @@ const ParticipantList: React.FC = () => {
     link: "",
     avaliableDates: [],
     price: "",
+    isFailed: false,
+    failedReason: "",
     participants: [],
   });
   const [loading, setLoading] = useState(true);
@@ -71,7 +72,7 @@ const ParticipantList: React.FC = () => {
   }, []);
 
   return (
-    <Box p={2}>
+    <Box p={2} position={"relative"}>
       <Stack
         direction={"column"}
         justifyContent={"center"}
@@ -128,6 +129,41 @@ const ParticipantList: React.FC = () => {
           ))
         )}
       </Stack>
+      {data.isFailed && (
+        <Stack
+          position={"absolute"}
+          top={0}
+          left={0}
+          width={"100%"}
+          height={"100%"}
+          bgcolor={"rgba(0, 0, 0, 0.5)"}
+          direction={"column"}
+          alignItems={"center"}
+          justifyContent={"flex-start"}
+          p={4}
+          spacing={2}
+          sx={{
+            backdropFilter: "blur(5px)",
+          }}
+        >
+          <Box position={"sticky"} top={"10vh"} left={0}>
+            <Typography
+              variant={"h4"}
+              color="staticColor.whiteText"
+              textAlign={"center"}
+            >
+              本次逃脫流團
+            </Typography>
+            <Typography
+              variant={"h6"}
+              color="staticColor.whiteText"
+              textAlign={"center"}
+            >
+              流團原因：{data.failedReason}
+            </Typography>
+          </Box>
+        </Stack>
+      )}
     </Box>
   );
 };

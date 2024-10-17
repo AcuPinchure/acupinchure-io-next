@@ -14,7 +14,6 @@ import {
   ListItem,
   ListItemButton,
   SwipeableDrawer,
-  useMediaQuery,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { List as ListIcon } from "@phosphor-icons/react/dist/ssr";

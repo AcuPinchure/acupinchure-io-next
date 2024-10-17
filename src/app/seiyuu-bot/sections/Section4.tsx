@@ -60,8 +60,10 @@ const Section4: React.FC = () => (
             src={"/images/bot/about_images/motion.gif"}
             fill
             alt="GIF Image"
-            objectFit={"cover"}
-            objectPosition={"center"}
+            style={{
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
           />
         </Box>
       </Grid>

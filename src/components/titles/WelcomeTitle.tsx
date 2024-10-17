@@ -1,13 +1,8 @@
-"use client";
-
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 
 const WelcomeTitle: React.FC = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
   return (
     <Stack direction={"column"} alignItems={"center"}>
       <Typography
@@ -23,9 +18,56 @@ const WelcomeTitle: React.FC = () => {
         color={"staticColor.whiteText"}
         textAlign={"center"}
       >
-        Full-stack
-        {isMobile ? <br /> : ", "}Illustrator
-        {isMobile ? <br /> : ", "}Anime hobbyist
+        <Box
+          component={"span"}
+          sx={{
+            display: {
+              xs: "block",
+              sm: "inline",
+            },
+            "&::after": {
+              xs: {
+                content: '""',
+              },
+              sm: {
+                content: '", "',
+              },
+            },
+          }}
+        >
+          Full-stack
+        </Box>
+
+        <Box
+          component={"span"}
+          sx={{
+            display: {
+              xs: "block",
+              sm: "inline",
+            },
+            "&::after": {
+              xs: {
+                content: '""',
+              },
+              sm: {
+                content: '", "',
+              },
+            },
+          }}
+        >
+          Illustrator
+        </Box>
+        <Box
+          component={"span"}
+          sx={{
+            display: {
+              xs: "block",
+              sm: "inline",
+            },
+          }}
+        >
+          Anime hobbyist
+        </Box>
       </Typography>
     </Stack>
   );

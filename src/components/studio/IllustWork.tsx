@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Button,
   Grid2 as Grid,
@@ -11,6 +9,7 @@ import IllustrationFrame from "./IllustrationFrame";
 
 export interface IllustWorkProps {
   src: string;
+
   title: string;
   aspectRatio: number;
   date: string;
@@ -34,10 +33,10 @@ const IllustWork: React.FC<IllustWorkProps> = ({
   inverted,
   pixivLink,
 }) => {
-  const theme = useTheme();
+  // const theme = useTheme();
 
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  // const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  // const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const img = (
     <Grid
@@ -55,13 +54,14 @@ const IllustWork: React.FC<IllustWorkProps> = ({
         aspectRatio={aspectRatio}
         src={src}
         alt={title}
-        padding={isSmallScreen ? undefined : padding}
+        padding={padding}
       />
     </Grid>
   );
 
   const meta = (
     <Grid
+      key={"meta"}
       size={{
         xs: 12,
         md: 6,
@@ -69,27 +69,46 @@ const IllustWork: React.FC<IllustWorkProps> = ({
       display={"flex"}
       flexDirection={"column"}
       justifyContent={"center"}
-      alignItems={isMobile || inverted ? "flex-end" : "flex-start"}
       p={4}
-      key={"meta"}
+      sx={{
+        alignItems: {
+          xs: "flex-end",
+          md: inverted ? "flex-end" : "flex-start",
+        },
+      }}
     >
       <Typography
         variant="h4"
         mb={2}
-        textAlign={isMobile || inverted ? "right" : "left"}
+        sx={{
+          textAlign: {
+            xs: "right",
+            md: inverted ? "right" : "left",
+          },
+        }}
       >
         {title}
       </Typography>
       <Typography
         variant="body1"
-        textAlign={isMobile || inverted ? "right" : "left"}
+        sx={{
+          textAlign: {
+            xs: "right",
+            md: inverted ? "right" : "left",
+          },
+        }}
       >
         {date}
       </Typography>
       {(device || software) && (
         <Typography
           variant="body1"
-          textAlign={isMobile || inverted ? "right" : "left"}
+          sx={{
+            textAlign: {
+              xs: "right",
+              md: inverted ? "right" : "left",
+            },
+          }}
         >
           {[software, device].join(" - ")}
         </Typography>
@@ -97,7 +116,12 @@ const IllustWork: React.FC<IllustWorkProps> = ({
       {description && (
         <Typography
           variant="body1"
-          textAlign={isMobile || inverted ? "right" : "left"}
+          sx={{
+            textAlign: {
+              xs: "right",
+              md: inverted ? "right" : "left",
+            },
+          }}
         >
           {description}
         </Typography>
@@ -111,8 +135,17 @@ const IllustWork: React.FC<IllustWorkProps> = ({
   );
 
   return (
-    <Grid container spacing={0} rowGap={4}>
-      {!isMobile && inverted ? [meta, img] : [img, meta]}
+    <Grid
+      container
+      spacing={0}
+      rowGap={4}
+      flexDirection={{
+        xs: "column",
+        md: inverted ? "row-reverse" : "row",
+      }}
+    >
+      {img}
+      {meta}
     </Grid>
   );
 };

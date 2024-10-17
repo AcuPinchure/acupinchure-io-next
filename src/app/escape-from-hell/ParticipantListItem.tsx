@@ -1,8 +1,12 @@
+"use client";
+
 import { Avatar, Box, Paper, Tooltip, Typography } from "@mui/material";
 import { useEffect, useRef } from "react";
+import ParticipantAvatar from "./ParticipantAvatar";
 
 export interface Participant {
   name: string;
+  short: string;
   avaliableDates: number[];
   color?: string;
 }
@@ -69,25 +73,20 @@ const ParticipantListItem: React.FC<ParticipantListItemProps> = ({
       </Typography>
       {participants.map((p, avatarIndex) => (
         <Box
+          key={p.name}
           position={"relative"}
           m={1}
           display={"inline-block"}
-          key={p.name}
           className={"participant"}
           sx={{
             opacity: 0,
           }}
         >
-          <Tooltip title={p.name} arrow>
-            <Avatar
-              sx={{
-                fontWeight: "bold",
-                bgcolor: p.color,
-              }}
-            >
-              {p.name[0]}
-            </Avatar>
-          </Tooltip>
+          <ParticipantAvatar
+            name={p.name}
+            short={p.short}
+            color={p.color || ""}
+          />
         </Box>
       ))}
     </Paper>

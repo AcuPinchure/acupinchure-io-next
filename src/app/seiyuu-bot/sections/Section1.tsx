@@ -32,8 +32,10 @@ const Section1: React.FC = () => {
               src={"/images/bot/about_images/tweet_demo.jpg"}
               fill
               alt="Twitter Notification"
-              objectFit={"cover"}
-              objectPosition={"center"}
+              style={{
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
             />
           </Box>
         </Grid>
